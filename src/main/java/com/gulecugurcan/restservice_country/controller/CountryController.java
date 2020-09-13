@@ -3,7 +3,6 @@ package com.gulecugurcan.restservice_country.controller;
 import com.gulecugurcan.restservice_country.model.Country;
 import com.gulecugurcan.restservice_country.service.CountryService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
@@ -15,7 +14,7 @@ public class CountryController {
 
     @Autowired
     CountryService countryService;
-    // http://localhost:8080/insertCountry?name=Turkey&population=82000000&capital=Ankara&currency=TL
+    // http://localhost:8090/insertCountry?name=Turkey&population=82000000&capital=Ankara&currency=TL
     @RequestMapping(value = "/insertCountry")
     public String insertCountry(@RequestParam String name,
                                 @RequestParam int population,
@@ -25,13 +24,13 @@ public class CountryController {
         Country country=countryService.insertCountry(name,population,capital,currency);
         return country.toString();
     }
-    //http://localhost:8080/getCountry?name=Turkey
+    //http://localhost:8090/getCountry?name=Turkey
     @RequestMapping(value ="/getCountry")
     public Country getCountry(@RequestParam String name){
         return countryService.getCountryByName(name);
     }
 
-    // http://localhost:8080/getCountries
+    // http://localhost:8090/getCountries
     @RequestMapping("/getCountries")
     public List<Country> getCountries(){
         return countryService.getCountries();
